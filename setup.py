@@ -18,7 +18,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type=README_MIME,
     packages=setuptools.find_packages(),
-    author_email="none@none.com",  # the email of the repo owner
+    author_email="leonhardmasche@gmail.com",  # the email of the repo owner
     classifiers=[  # add some info about you package
         "Programming Language :: Python",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
