@@ -1,5 +1,5 @@
 Reference
 =========
 
-.. automodule:: mebis
+.. automodule:: mebispy
     :members:

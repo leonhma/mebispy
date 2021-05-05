@@ -10,11 +10,11 @@ with open(README, "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="mebis",  # placeholder (name of repo)
+    name="mebispy",  # placeholder (name of repo)
     version="<>",  # placeholder (tag of release)
     author="leonhma",  # placeholder (owner of repo)
     description="python bindings for the mebis api",  # placeholder (description of repo)
-    url="https://github.com/leonhma/mebis",  # placeholder (url of repo)
+    url="https://github.com/leonhma/mebispy",  # placeholder (url of repo)
     long_description=long_description,
     long_description_content_type=README_MIME,
     packages=setuptools.find_packages(),

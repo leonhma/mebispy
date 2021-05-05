@@ -9,7 +9,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath('..'))
 
-project = "mebis"
+project = "mebispy"
 copyright = "GNU General Public License v3.0"
 author = "leonhma"
 release = "<>"
