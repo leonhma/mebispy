@@ -10,11 +10,11 @@ with open(README, "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="mebispy",  # placeholder (name of repo)
+    name="mebispy",
     version="<>",  # placeholder (tag of release)
-    author="leonhma",  # placeholder (owner of repo)
-    description="python bindings for the mebis api",  # placeholder (description of repo)
-    url="https://github.com/leonhma/mebispy",  # placeholder (url of repo)
+    author="leonhma",
+    description="python bindings for the mebis api",
+    url="https://github.com/leonhma/mebispy",
     long_description=long_description,
     long_description_content_type=README_MIME,
     packages=setuptools.find_packages(),
@@ -24,6 +24,7 @@ setuptools.setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent"
     ],
-    install_requires=[  # add required pypi packages here
+    install_requires=[
+        'requests'
     ]
 )
