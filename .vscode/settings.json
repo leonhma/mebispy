@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "C:\\Users\\leonh\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "python.linting.pylamaEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": false
+}
