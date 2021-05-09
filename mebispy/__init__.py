@@ -17,7 +17,7 @@ class UserSession():
         sesskey: (str) The session key. (Made accessible for advanced users)
     """
 
-    def __init__(self, user: str, pwd: str):
+    def __init__(self, user, pwd):
         self._login(user, pwd)
 
     def _login(self, user, pwd):
@@ -41,7 +41,8 @@ class UserSession():
         """Make a GET request in the context of the user's session.
             (Made accessible for advanced users.)
 
-        Note: This a wrapper around :func:`requests.get` [documentation here](https://docs.python-requests.org/en/master/api/)"""
+        Note: This a wrapper around :func:`requests.get` [documentation here](https://docs.python-requests.org/en/master/api/)
+        """
         r = self._session.get(*args, **kwargs)
         return r
 
@@ -49,7 +50,8 @@ class UserSession():
         """Make a POST request in the context of the user's session.
             (Made accessible for advanced users.)
 
-        Note: This a wrapper around :func:`requests.post`. [documentation here](https://docs.python-requests.org/en/master/api/)"""
+        Note: This a wrapper around :func:`requests.post`. [documentation here](https://docs.python-requests.org/en/master/api/)
+        """
         r = self._session.post(*args, **kwargs)
         return r
 
@@ -65,6 +67,6 @@ class UserSession():
 
         r = self.post('https://lernplattform.mebis.bayern.de/mod/choice/view.php',
                       {'answer': choice_id, 'sesskey': self.sesskey, 'action': 'makechoice', 'id': survey_id},
-                      allow_redireccts=False)
+                      allow_redirects=False)
         if 'location' not in r.headers:
             raise ActionFailedError('Choice couldn`t be set. It likely got disabled by an administrator or the wrong ids were given.')
