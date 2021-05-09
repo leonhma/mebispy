@@ -2,7 +2,7 @@ from html import unescape
 from re import search
 from typing import Union
 
-from requests import Session
+from requests import Response, Session
 
 from .common.exceptions import LoginError, HTTPError, ActionFailedError
 
@@ -11,11 +11,11 @@ class UserSession():
     """Class representing the session of a logged-in user.
 
     Args:
-       user (str, required): The username used to sign in.
-       pwd (str, required): The password used to sign in.
+        user (str, required): The username used to sign in.
+        pwd (str, required): The password used to sign in.
 
     Attributes:
-       sesskey The session key. (Made accessible for advanced users)
+        sesskey (str): The session key. (Made accessible for advanced users)
     """
 
     def __init__(self, user: str, pwd: str):
@@ -45,30 +45,33 @@ class UserSession():
         # get sesskey
         self.sesskey = search(r'(?<=sesskey\"\:\").*?(?=\")', r.text).group(0)
 
-    def get(self, *args, **kwargs):
+    def get(self, *args, **kwargs) -> Response:
         """Make a GET request in the context of the user's session.
-           (Made accessible for advanced users.)
+
+        (Made accessible for advanced users.)
 
         Raises:
-           `HTTPError`: If the request was answered with an error.
+            `HTTPError`: If the request was answered with an error.
 
-        Note: This a wrapper around :func:`requests.get`.
-           [docs here](https://docs.python-requests.org/en/master/api/)
+        Note:
+            This a wrapper around :func:`requests.get`.
+            [docs here](https://docs.python-requests.org/en/master/api/)
         """
         r = self._session.get(*args, **kwargs)
         if r.status_code >= 400:
             raise HTTPError(r)
         return r
 
-    def post(self, *args, **kwargs):
+    def post(self, *args, **kwargs) -> Response:
         """Make a POST request in the context of the user's session.
-           (Made accessible for advanced users.)
+            (Made accessible for advanced users.)
 
         Raises:
-           `HTTPError`: If the request was answered with an error.
+            `HTTPError`: If the request was answered with an error.
 
-        Note: This a wrapper around :func:`requests.post`.
-           [docs here](https://docs.python-requests.org/en/master/api/)
+        Note:
+            This a wrapper around :func:`requests.post`.
+            [docs here](https://docs.python-requests.org/en/master/api/)
         """
         r = self._session.post(*args, **kwargs)
         if r.status_code >= 400:
@@ -77,17 +80,17 @@ class UserSession():
 
     def ajax(self, method: str, args: dict) -> dict:
         """Make a request to the ajax endpoint of mebis.
-           (Made accessible for advanced users.)
+        (Made accessible for advanced users.)
 
         Args:
-           method (str, required): The identifier of the method.
-           args (dict, required): The arguments to the method.
+            method (str, required): The identifier of the method.
+            args (dict, required): The arguments to the method.
 
         Raises:
-           ActionFailedError: If the response indicates an error.
+            ActionFailedError: If the response indicates an error.
 
         Returns:
-           dict: The reponse data of the request in json form.
+            dict: The reponse data of the request in json form.
         """
         # TODO add documentation
         r = self.post(
@@ -106,13 +109,13 @@ class UserSession():
         """Helper for making survey choices.
 
         Args:
-           survey_id (str | int, required) The id of the survey.
-              (Can be found in the url when looking at the survey.)
-           choice_id (str | int, required) The id of your choice.
-              (Can be found through the devtools inspector.)
+            survey_id (str | int, required) The id of the survey.
+                (Can be found in the url when looking at the survey.)
+            choice_id (str | int, required) The id of your choice.
+                (Can be found through the devtools inspector.)
 
         Returns:
-           bool: True if choice was succesfully set, False otherwise
+            bool: `True` if choice was succesfully set, `False` otherwise
         """
 
         r = self._post('https://lernplattform.mebis.bayern.de/'
