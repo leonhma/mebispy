@@ -169,11 +169,15 @@
 <li><p><strong>pwd</strong> (<em>str</em><em>, </em><em>required</em>) – The password used to sign in.</p></li>
 </ul>
 </dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>LoginError</strong> – If the login failed.</p>
+</dd>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="mebispy.UserSession.sesskey">
 <span class="sig-name descname"><span class="pre">sesskey</span></span><a class="headerlink" href="#mebispy.UserSession.sesskey" title="Permalink to this definition">¶</a></dt>
-<dd><p>The session key. (Made accessible for advanced users)</p>
+<dd><p>The session key (one of them at least).
+(Made accessible for advanced users)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>str</p>
@@ -208,8 +212,8 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="mebispy.UserSession.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">requests.models.Response</span><a class="headerlink" href="#mebispy.UserSession.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Make a GET request in the context of the user’s session.</p>
-<p>(Made accessible for advanced users.)</p>
+<dd><p>Make a GET request in the context of the user’s session.
+(Made accessible for advanced users.)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><p><strong>HTTPError</strong> – If the request was answered with an error.</p>
@@ -218,7 +222,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This a wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">requests.get()</span></code>.
-[docs here](<a class="reference external" href="https://docs.python-requests.org/en/master/api/">https://docs.python-requests.org/en/master/api/</a>)</p>
+<a class="reference external" href="https://docs.python-requests.org/en/master/api/#requests.get">docs here</a></p>
 </div>
 </dd></dl>
 
@@ -245,10 +249,8 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="mebispy.UserSession.post">
 <span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">requests.models.Response</span><a class="headerlink" href="#mebispy.UserSession.post" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Make a POST request in the context of the user’s session.</dt><dd><p>(Made accessible for advanced users.)</p>
-</dd>
-</dl>
+<dd><p>Make a POST request in the context of the user’s session.
+(Made accessible for advanced users.)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><p><strong>HTTPError</strong> – If the request was answered with an error.</p>
@@ -257,7 +259,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This a wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">requests.post()</span></code>.
-[docs here](<a class="reference external" href="https://docs.python-requests.org/en/master/api/">https://docs.python-requests.org/en/master/api/</a>)</p>
+<a class="reference external" href="https://docs.python-requests.org/en/master/api/#requests.post">docs here</a></p>
 </div>
 </dd></dl>
 
