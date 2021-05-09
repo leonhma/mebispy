@@ -13,7 +13,7 @@ setuptools.setup(
     name="mebispy",
     version="<>",  # placeholder (tag of release)
     author="leonhma",
-    description="python bindings for the mebis api",
+    description="python bindings for mebis",
     url="https://github.com/leonhma/mebispy",
     long_description=long_description,
     long_description_content_type=README_MIME,

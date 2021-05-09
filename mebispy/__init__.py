@@ -1,10 +1,10 @@
 from html import unescape
-from json import loads
 from re import search
+from typing import Union
 
-from requests import Session, Response
+from requests import Session
 
-from .common.exceptions import LoginError, HTTPError
+from .common.exceptions import LoginError, HTTPError, ActionFailedError
 
 
 class UserSession():
@@ -75,7 +75,7 @@ class UserSession():
             raise HTTPError(r)
         return r
 
-    def ajax(self, method: str, args: dict) -> Response:
+    def ajax(self, method: str, args: dict) -> dict:
         """Make an request to the ajax endpoint of mebis.
             (Made accessible for advanced users.)
 
@@ -90,8 +90,12 @@ class UserSession():
         r = self.post(
             'https://lernplattform.mebis.bayern.de/lib/ajax/service.php',
             params={'sesskey': self.sesskey},
-            json=[{"index": 0, "methodname": method, "args": args}])
-        return r.json()
+            json=[{"index": 0, "methodname": method, "args": args}]).json()[0]
+        if r['error'] is True:
+            raise ActionFailedError(
+                'The ajax request failed. Check for spelling errors or take a'
+                + ' look at the docs.')
+        return r['data']
 
     class Helpers():
         def __init__(self, sess):
@@ -101,8 +105,8 @@ class UserSession():
             self.sesskey = sess.sesskey
 
         def make_survey_choice(self,
-                               survey_id: int | str,
-                               choice_id: int | str) -> bool:
+                               survey_id: Union[int, str],
+                               choice_id: Union[int, str]) -> bool:
             """Helper for making survey choices.
 
             Args:
