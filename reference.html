@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Reference &mdash; mebispy 0.0.1 documentation</title>
+  <title>Reference &mdash; mebispy  documentation</title>
   
 
   
@@ -156,8 +156,87 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="reference">
-<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-mebispy">
+<span id="reference"></span><h1>Reference<a class="headerlink" href="#module-mebispy" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="mebispy.UserSession">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mebispy.</span></span><span class="sig-name descname"><span class="pre">UserSession</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pwd</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mebispy.UserSession" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing the session of an logged-in user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> (<em>str</em><em>, </em><em>required</em>) – </p></li>
+<li><p><strong>pwd</strong> (<em>str</em><em>, </em><em>required</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mebispy.UserSession.sesskey">
+<span class="sig-name descname"><span class="pre">sesskey</span></span><a class="headerlink" href="#mebispy.UserSession.sesskey" title="Permalink to this definition">¶</a></dt>
+<dd><p>(str) The session key. (Made accessible for advanced users)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mebispy.UserSession.ajax">
+<span class="sig-name descname"><span class="pre">ajax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="headerlink" href="#mebispy.UserSession.ajax" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Make an request to the ajax endpoint of mebis.</dt><dd><p>(Made accessible for advanced users.)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>required</em>) – The identifier of the method.</p></li>
+<li><p><strong>args</strong> (<em>dict</em><em>, </em><em>required</em>) – The arguments to the method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The reponse of the request.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mebispy.UserSession.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mebispy.UserSession.get" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Make a GET request in the context of the user’s session.</dt><dd><p>(Made accessible for advanced users.)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>HTTPError</strong> – If the request was answered with an error.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Note: This a wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">requests.get()</span></code>.</dt><dd><p>[docs here](<a class="reference external" href="https://docs.python-requests.org/en/master/api/">https://docs.python-requests.org/en/master/api/</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mebispy.UserSession.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mebispy.UserSession.post" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Make a POST request in the context of the user’s session.</dt><dd><p>(Made accessible for advanced users.)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>HTTPError</strong> – If the request was answered with an error.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Note: This a wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">requests.post()</span></code>.</dt><dd><p>[docs here](<a class="reference external" href="https://docs.python-requests.org/en/master/api/">https://docs.python-requests.org/en/master/api/</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
