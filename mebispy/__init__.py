@@ -14,8 +14,12 @@ class UserSession():
         user (str, required): The username used to sign in.
         pwd (str, required): The password used to sign in.
 
+    Raises:
+        :exc:`LoginError`: If the login failed.
+
     Attributes:
-        sesskey (str): The session key. (Made accessible for advanced users)
+        sesskey (str): The session key (one of them at least).
+            (Made accessible for advanced users)
     """
 
     def __init__(self, user: str, pwd: str):
@@ -47,15 +51,15 @@ class UserSession():
 
     def get(self, *args, **kwargs) -> Response:
         """Make a GET request in the context of the user's session.
-
         (Made accessible for advanced users.)
 
         Raises:
-            `HTTPError`: If the request was answered with an error.
+            :exc:`HTTPError`: If the request was answered with an error.
 
         Note:
             This a wrapper around :func:`requests.get`.
-            [docs here](https://docs.python-requests.org/en/master/api/)
+            `docs here
+            <https://docs.python-requests.org/en/master/api/#requests.get>`_
         """
         r = self._session.get(*args, **kwargs)
         if r.status_code >= 400:
@@ -64,14 +68,15 @@ class UserSession():
 
     def post(self, *args, **kwargs) -> Response:
         """Make a POST request in the context of the user's session.
-            (Made accessible for advanced users.)
+        (Made accessible for advanced users.)
 
         Raises:
-            `HTTPError`: If the request was answered with an error.
+            :exc:`HTTPError`: If the request was answered with an error.
 
         Note:
             This a wrapper around :func:`requests.post`.
-            [docs here](https://docs.python-requests.org/en/master/api/)
+            `docs here
+            <https://docs.python-requests.org/en/master/api/#requests.post>`_
         """
         r = self._session.post(*args, **kwargs)
         if r.status_code >= 400:
@@ -87,7 +92,7 @@ class UserSession():
             args (dict, required): The arguments to the method.
 
         Raises:
-            ActionFailedError: If the response indicates an error.
+            :exc:`ActionFailedError`: If the response indicates an error.
 
         Returns:
             dict: The reponse data of the request in json form.
