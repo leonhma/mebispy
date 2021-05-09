@@ -161,26 +161,30 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="mebispy.UserSession">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mebispy.</span></span><span class="sig-name descname"><span class="pre">UserSession</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pwd</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mebispy.UserSession" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class representing the session of an logged-in user.</p>
+<dd><p>Class representing the session of a logged-in user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user</strong> (<em>str</em><em>, </em><em>required</em>) – </p></li>
-<li><p><strong>pwd</strong> (<em>str</em><em>, </em><em>required</em>) – </p></li>
+<li><p><strong>user</strong> (<em>str</em><em>, </em><em>required</em>) – The username used to sign in.</p></li>
+<li><p><strong>pwd</strong> (<em>str</em><em>, </em><em>required</em>) – The password used to sign in.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="mebispy.UserSession.sesskey">
-<span class="sig-name descname"><span class="pre">sesskey</span></span><a class="headerlink" href="#mebispy.UserSession.sesskey" title="Permalink to this definition">¶</a></dt>
-<dd><p>(str) The session key. (Made accessible for advanced users)</p>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sesskey</span> <span class="pre">The</span> <span class="pre">session</span> <span class="pre">key.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Made accessible for advanced users</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mebispy.UserSession.ajax">
 <span class="sig-name descname"><span class="pre">ajax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="headerlink" href="#mebispy.UserSession.ajax" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
-<dt>Make an request to the ajax endpoint of mebis.</dt><dd><p>(Made accessible for advanced users.)</p>
+<dt>Make a request to the ajax endpoint of mebis.</dt><dd><p>(Made accessible for advanced users.)</p>
 </dd>
 </dl>
 <dl class="field-list simple">
@@ -190,11 +194,14 @@
 <li><p><strong>args</strong> (<em>dict</em><em>, </em><em>required</em>) – The arguments to the method.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The reponse of the request.</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ActionFailedError</strong> – If the response indicates an error.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Response</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The reponse data of the request in json form.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -213,6 +220,26 @@
 </dl>
 <dl class="simple">
 <dt>Note: This a wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">requests.get()</span></code>.</dt><dd><p>[docs here](<a class="reference external" href="https://docs.python-requests.org/en/master/api/">https://docs.python-requests.org/en/master/api/</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mebispy.UserSession.make_survey_choice">
+<span class="sig-name descname"><span class="pre">make_survey_choice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">survey_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choice_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#mebispy.UserSession.make_survey_choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper for making survey choices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>survey_id</strong> (<em>str | int</em><em>, </em><em>required</em>) – (Can be found in the url when looking at the survey.)</p></li>
+<li><p><strong>choice_id</strong> (<em>str | int</em><em>, </em><em>required</em>) – (Can be found through the devtools inspector.)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if choice was succesfully set, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
