@@ -15,16 +15,15 @@ class UserSession():
         pwd (str, required): The password used to sign in.
 
     Raises:
-        :exc:`LoginError`: If the login failed.
+        LoginError: If the login failed.
 
     Attributes:
         sesskey (str): The session key (one of them at least).
-            (Made accessible for advanced users)
+        userid (str): The user id.
     """
 
     def __init__(self, user: str, pwd: str):
         self._login(user, pwd)
-        self.helpers = self.Helpers(self)
 
     def _login(self, user, pwd):
         self._session = Session()
@@ -48,13 +47,13 @@ class UserSession():
                                      'SAMLResponse': saml})
         # get sesskey
         self.sesskey = search(r'(?<=sesskey\"\:\").*?(?=\")', r.text).group(0)
+        self.userid = search(r'(?<=data-userid\=\").*?(?=\")', r.text).group(0)
 
     def get(self, *args, **kwargs) -> Response:
         """Make a GET request in the context of the user's session.
-        (Made accessible for advanced users.)
 
         Raises:
-            :exc:`HTTPError`: If the request was answered with an error.
+            HTTPError: If the request was answered with an error.
 
         Note:
             This a wrapper around :func:`requests.get`.
@@ -68,10 +67,9 @@ class UserSession():
 
     def post(self, *args, **kwargs) -> Response:
         """Make a POST request in the context of the user's session.
-        (Made accessible for advanced users.)
 
         Raises:
-            :exc:`HTTPError`: If the request was answered with an error.
+            HTTPError: If the request was answered with an error.
 
         Note:
             This a wrapper around :func:`requests.post`.
@@ -85,14 +83,13 @@ class UserSession():
 
     def ajax(self, method: str, args: dict) -> dict:
         """Make a request to the ajax endpoint of mebis.
-        (Made accessible for advanced users.)
 
         Args:
             method (str, required): The identifier of the method.
             args (dict, required): The arguments to the method.
 
         Raises:
-            :exc:`ActionFailedError`: If the response indicates an error.
+            ActionFailedError: If the response indicates an error.
 
         Returns:
             dict: The reponse data of the request in json form.
@@ -101,7 +98,7 @@ class UserSession():
         r = self.post(
             'https://lernplattform.mebis.bayern.de/lib/ajax/service.php',
             params={'sesskey': self.sesskey},
-            json=[{"index": 0, "methodname": method, "args": args}]).json()[0]
+            json=[{"methodname": method, "args": args}]).json()[0]
         if r['error'] is True:
             raise ActionFailedError(
                 'The ajax request failed. Check for spelling errors or take a'

@@ -3,5 +3,6 @@
     "python.linting.pylamaEnabled": true,
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": false
+    "python.linting.flake8Enabled": false,
+    "restructuredtext.confPath": "${workspaceFolder}\\docs"
 }
