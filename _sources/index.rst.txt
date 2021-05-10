@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to mebispy's documentation!
-=====================================================
+===================================
 
 .. toctree::
    :maxdepth: 2
@@ -14,9 +14,7 @@ Welcome to mebispy's documentation!
 
 
 
-Indices and tables
-==================
+Indicex
+=======
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
