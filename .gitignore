@@ -3,4 +3,5 @@ examples/
 _build/
 .vscode/
 test.py
+mebispy.egg-info/
 
