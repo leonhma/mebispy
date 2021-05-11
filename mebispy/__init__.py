@@ -122,7 +122,7 @@ class UserSession():
 
         r = self.post('https://lernplattform.mebis.bayern.de/'
                       + 'mod/choice/view.php',
-                      {'answer': choice_id, 'sesskey': self._sesskey,
+                      {'answer': choice_id, 'sesskey': self.sesskey,
                        'action': 'makechoice', 'id': survey_id},
                       allow_redirects=False)
         return True if 'location' in r.headers else False
