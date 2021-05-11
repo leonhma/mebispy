@@ -1,8 +1,0 @@
-{
-    "python.pythonPath": "C:\\Users\\Leonhard\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
-    "python.linting.pylamaEnabled": true,
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": false,
-    "restructuredtext.confPath": "${workspaceFolder}\\docs"
-}
