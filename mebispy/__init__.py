@@ -120,9 +120,9 @@ class UserSession():
             bool: `True` if choice was succesfully set, `False` otherwise
         """
 
-        r = self._post('https://lernplattform.mebis.bayern.de/'
-                       + 'mod/choice/view.php',
-                       {'answer': choice_id, 'sesskey': self._sesskey,
-                        'action': 'makechoice', 'id': survey_id},
-                       allow_redirects=False)
+        r = self.post('https://lernplattform.mebis.bayern.de/'
+                      + 'mod/choice/view.php',
+                      {'answer': choice_id, 'sesskey': self._sesskey,
+                       'action': 'makechoice', 'id': survey_id},
+                      allow_redirects=False)
         return True if 'location' in r.headers else False
