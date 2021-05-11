@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Reference &mdash; mebispy 0.0.5 documentation</title>
+  <title>Reference &mdash; mebispy 0.0.6 documentation</title>
   
 
   
@@ -157,6 +157,21 @@
             
   <div class="section" id="module-mebispy">
 <span id="reference"></span><h1>Reference<a class="headerlink" href="#module-mebispy" title="Permalink to this headline">¶</a></h1>
+<dl class="py exception">
+<dt class="sig sig-object py" id="mebispy.ActionFailedError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">mebispy.</span></span><span class="sig-name descname"><span class="pre">ActionFailedError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Action</span> <span class="pre">failed</span> <span class="pre">to</span> <span class="pre">complete.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mebispy.ActionFailedError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="mebispy.HTTPError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">mebispy.</span></span><span class="sig-name descname"><span class="pre">HTTPError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mebispy.HTTPError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="mebispy.LoginError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">mebispy.</span></span><span class="sig-name descname"><span class="pre">LoginError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mebispy.LoginError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="mebispy.UserSession">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mebispy.</span></span><span class="sig-name descname"><span class="pre">UserSession</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pwd</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mebispy.UserSession" title="Permalink to this definition">¶</a></dt>
@@ -169,7 +184,7 @@
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>LoginError</strong> – If the login failed.</p>
+<dd class="field-even"><p><a class="reference internal" href="#mebispy.LoginError" title="mebispy.LoginError"><strong>LoginError</strong></a> – If the login failed.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -206,7 +221,7 @@
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ActionFailedError</strong> – If the response indicates an error.</p>
+<dd class="field-even"><p><a class="reference internal" href="#mebispy.ActionFailedError" title="mebispy.ActionFailedError"><strong>ActionFailedError</strong></a> – If the response indicates an error.</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The reponse data of the request in json form.</p>
@@ -223,7 +238,7 @@
 <dd><p>Make a GET request in the context of the user’s session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>HTTPError</strong> – If the request was answered with an error.</p>
+<dd class="field-odd"><p><a class="reference internal" href="#mebispy.HTTPError" title="mebispy.HTTPError"><strong>HTTPError</strong></a> – If the request was answered with an error.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -259,7 +274,7 @@
 <dd><p>Make a POST request in the context of the user’s session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>HTTPError</strong> – If the request was answered with an error.</p>
+<dd class="field-odd"><p><a class="reference internal" href="#mebispy.HTTPError" title="mebispy.HTTPError"><strong>HTTPError</strong></a> – If the request was answered with an error.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -269,6 +284,25 @@
 </div>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="mebispy.debug">
+<span class="sig-prename descclassname"><span class="pre">mebispy.</span></span><span class="sig-name descname"><span class="pre">debug</span></span><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#mebispy.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag indicating whether varbose messages should be used.
+Can be set via <a class="reference internal" href="#mebispy.set_debug" title="mebispy.set_debug"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_debug()</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mebispy.set_debug">
+<span class="sig-prename descclassname"><span class="pre">mebispy.</span></span><span class="sig-name descname"><span class="pre">set_debug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mebispy.set_debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setter for the value of ‘debug’.
+Enables verbose errors and debug messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>val</strong> (<em>bool</em><em>, </em><em>required</em>) – The value to set ‘debug’ to.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
