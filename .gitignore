@@ -1,4 +1,6 @@
 __pycache__/
 examples/
 _build/
+.vscode/
 test.py
+
